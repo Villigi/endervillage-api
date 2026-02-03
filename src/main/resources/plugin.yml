@@ -1,0 +1,21 @@
+name: Endervillage-Essentials
+version: '1.0-SNAPSHOT'
+main: de.villigi.endervillageEssentials.Essentials
+
+commands:
+  gamemode:
+    description: Change your gamemode
+    aliases: [gm]
+  time:
+    description: Change the time of day
+    aliases: [t]
+  Pluginloader:
+    description: Load a plugin
+    aliases: [plo]
+  fly:
+    description: Toggle fly mode
+  messages:
+  bar:
+  help:
+  performance:
+    aliases: perf

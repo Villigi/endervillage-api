@@ -19,3 +19,6 @@ commands:
   help:
   performance:
     aliases: perf
+  rename:
+    aliases:
+      - re

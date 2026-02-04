@@ -93,4 +93,22 @@ public class MessageApi {
             e.printStackTrace();
         }
     }
+
+    public void deleteMessage() {
+        try {
+            PreparedStatement statement = Essentials.getInstance().getDatabaseManager().getConnection().prepareStatement("DELETE FROM messages WHERE Placeholder = '"+ placeholder +"';");
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editPlaceholder(String newPlaceholder) {
+        try {
+            PreparedStatement statement = Essentials.getInstance().getDatabaseManager().getConnection().prepareStatement("UPDATE messages SET Placeholder = '" + newPlaceholder + "' Placeholder = '" + placeholder + "';");
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

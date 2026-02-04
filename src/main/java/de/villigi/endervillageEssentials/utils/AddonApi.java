@@ -8,19 +8,38 @@ import java.sql.SQLException;
 
 public class AddonApi {
 
-    private String addon;
+    private Addons addon;
 
-    public AddonApi(String addon) {
+    public AddonApi(Addons addon) {
         this.addon = addon;
     }
 
     public void create() {
+        String addonString = addon.toString();
         try {
-            PreparedStatement statement = Essentials.getInstance().getDatabaseManager().getConnection().prepareStatement("INSERT INTO addon_availability (Addon, Availability) VALUES ('" + addon + "', '" + AddonAvailability.UNCLEAR.toString() + "');");
+            PreparedStatement statement = Essentials.getInstance().getDatabaseManager().getConnection().prepareStatement("INSERT INTO addon_availability (addonString, Availability) VALUES ('" + addonString + "', '" + AddonAvailability.UNCLEAR.toString() + "');");
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean contains() {
+        String addonString = addon.toString();
+        boolean exists = false;
+        try {
+            PreparedStatement statement = Essentials.getInstance().getDatabaseManager().getConnection().prepareStatement("SELECT * FROM `addon_availability` WHERE Addon = '" + addonString + "';");
+            ResultSet resultSet = null;
+            resultSet = statement.executeQuery();
+            if(resultSet.next()) {
+                exists = true;
+            }else{
+                exists = false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exists;
     }
 
     public void delete() {

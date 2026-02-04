@@ -46,6 +46,7 @@ public final class Essentials extends JavaPlugin {
         getCommand("messages").setExecutor(new MessagesCMD());
         getCommand("help").setExecutor(new HelpCMD());
         getCommand("performance").setExecutor(new PerformanceCMD());
+        getCommand("rename").setExecutor(new ItemRenameCMD());
     }
 
     public void loadListeners() {
